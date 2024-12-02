@@ -21,7 +21,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         dissableHttpMethods(Book.class, configuration, theUnsupportedActions);
 
         // Configure CORS Mapping
-        corsRegistry.addMapping(theAllowedOrigins);
+        corsRegistry.addMapping(configuration.getBasePath() + "/**")
+                .allowedOrigins(theAllowedOrigins);
     }
 
     private void dissableHttpMethods(Class theClass, RepositoryRestConfiguration configuration, HttpMethod[] theUnsupportedActions) {
