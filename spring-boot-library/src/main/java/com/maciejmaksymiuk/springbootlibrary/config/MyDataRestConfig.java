@@ -1,6 +1,7 @@
 package com.maciejmaksymiuk.springbootlibrary.config;
 
 import com.maciejmaksymiuk.springbootlibrary.entity.Book;
+import com.maciejmaksymiuk.springbootlibrary.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -18,7 +19,10 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         HttpMethod[] theUnsupportedActions = {HttpMethod.POST, HttpMethod.PATCH, HttpMethod.PUT, HttpMethod.DELETE};
         configuration.exposeIdsFor(Book.class);
+        configuration.exposeIdsFor(Review.class);
+
         dissableHttpMethods(Book.class, configuration, theUnsupportedActions);
+        dissableHttpMethods(Review.class, configuration, theUnsupportedActions);
 
         // Configure CORS Mapping
         corsRegistry.addMapping(configuration.getBasePath() + "/**")
