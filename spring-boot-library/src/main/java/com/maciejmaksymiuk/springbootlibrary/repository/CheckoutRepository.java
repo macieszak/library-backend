@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CheckoutRepository extends JpaRepository<Checkout, Long> {
 
-    Checkout findByUserEmailAndAndBookId(String userEmail, Long bookId);
+    Checkout findByUserEmailAndBookId(String userEmail, Long bookId);
 
 
 
